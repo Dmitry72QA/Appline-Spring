@@ -1,0 +1,39 @@
+package ru.appline.logic;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Model {
+
+    static Map<String, Side> compass;
+
+    public Model() {
+        compass = new HashMap<>();
+    }
+
+    public static Map<String, Side> getCompass() {
+        return compass;
+    }
+
+    public static Model getInstance() {
+        return new Model();
+    }
+
+    public void put(String side, String degree){
+        compass.put(side, new Side(side, degree.split("-")));
+    }
+
+    public String choosingSide(int degree) {
+        for(Map.Entry<String, Side> entry : compass.entrySet()){
+            int a = entry.getValue().boarder[0];
+            int b = entry.getValue().boarder[1];
+            System.out.println(a + " " + b);
+            if (degree >= a && degree <= b){
+                return entry.getKey();
+            }
+        }
+
+        return "Данное направление не найдено";
+
+    }
+}

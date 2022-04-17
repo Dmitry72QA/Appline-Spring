@@ -1,0 +1,24 @@
+package ru.appline.logic;
+
+import java.util.Arrays;
+
+public class Side {
+
+    String name;
+    int [] boarder;
+
+    public Side(String name, String[] boarder) {
+        this.name = name;
+        this.boarder = new int[2];
+        this.boarder[0] = Integer.parseInt(boarder[0]);
+        this.boarder[1] = Integer.parseInt(boarder[1]);
+    }
+
+    @Override
+    public String toString() {
+        return "Side{" +
+                "name='" + name + '\'' +
+                ", boarder=" + Arrays.toString(boarder) +
+                '}';
+    }
+}
